@@ -16,3 +16,6 @@ This application that will determine the real time emotions of a user.
 5. Execute Program using the following command
 - python RealTimeFaceEmotion.py
 	
+
+
+**Facial Recognition**
