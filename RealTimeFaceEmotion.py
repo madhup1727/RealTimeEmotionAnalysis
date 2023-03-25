@@ -131,13 +131,13 @@ while True:
     cv2.putText(frame, "Disgust", (5, 245), cv2.FONT_HERSHEY_SIMPLEX, 0.5, black_color, 1, cv2.CV_AA)
     cv2.rectangle(frame, (graph_start_x, 230), (disgust_per + graph_start_x, 250), grey_color, -1)
 
-    happy_q = round(((neutral_val + happy_val + surprised_val) / current_frame_val) * 100, 1)
-    sad_q = round(((fear_val + sad_val + angry_val + disgust_val) / current_frame_val) * 100, 1)
+    positive_zone_value = round(((neutral_val + happy_val + surprised_val) / current_frame_val) * 100, 1)
+    #negative_zone_value = round(((fear_val + sad_val + angry_val + disgust_val) / current_frame_val) * 100, 1)
 
     cv2.rectangle(frame, (int(frame_width)-320, 12), (int(frame_width)-50, 35), platinum_color, -1)
 
     cv2.putText(frame, "INTERVENTION INDICATOR", (int(frame_width)-300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, black_color, 1, cv2.CV_AA)
-    if happy_q >= 50:
+    if positive_zone_value >= 50:
         cv2.circle(frame, (int(frame_width)-80, 25), 8, green_color, -1)
     else:
         cv2.circle(frame, (int(frame_width)-80, 25), 8, red_color, -1)
