@@ -11,7 +11,7 @@ This application that will determine the real time emotions of a user.
 1. Pull the code from the git repository 
 2. Navigate to the folder that contains the code
 3. Run the following command to bring all the dependencies
-	pip install -r requirements.txt
-4. Execute Program:
-	python RealTimeFaceEmotion.py
+- pip install -r requirements.txt
+4. Execute Program using the following command
+- python RealTimeFaceEmotion.py
 	
