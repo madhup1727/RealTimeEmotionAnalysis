@@ -2,14 +2,13 @@
 
 Because of lack of data that can forewarn medical emergencies/crisis,  timely medical help may not reach a person in need. Moreover certain research/study may need to observe humans in their natural environment, without disrupting their day to day activities, so that correct treatment/help may be provided. This is where our solution will help bridge the gap. 
 
-This application has uses in a variety of settings such as
-Rehabilitation Centres
-Mental institution
-Old Age Homes
-Hospitals
-Orphanages
-Airports
-![image](https://user-images.githubusercontent.com/8532435/227708828-d7ab2373-7acd-4e47-b77d-c4f43c0ef30c.png)
+This application has uses in a variety of settings such as 
+> * Rehabilitation Centres
+> *  Mental institution
+> * Old Age Homes
+> *  Hospitals
+> *  Orphanages
+> * Airports
 
 
 ## Pre-Requsites
@@ -35,7 +34,4 @@ $ pip install -r requirements.txt
 $ python RealTimeFaceEmotion.py
 ```
 
-	
 
-
-**Facial Recognition**
