@@ -13,13 +13,13 @@ emo_detector = FER(mtcnn=True)
 text_color = (50, 209, 89)
 face_box_color = (255, 255, 0)
 
-red_color = (255, 0, 0)
+red_color = (0,0,255)
 green_color = (51, 255, 51)
 white_color = (255, 255, 255)
 black_color = (0, 0, 0)
 yellow_color = (255, 255, 51)
 grey_color = (128, 128, 128)
-blue_color = (0, 0, 204)
+blue_color = (204, 0, 0)
 teal_color = (0, 204, 204)
 pink_color=(255, 0, 255)
 orange_color = (255, 166, 66)
@@ -71,32 +71,34 @@ while True:
 
         if dominant_emotion == 'angry':
             angry_val = angry_val + 1
-            angry_per = int(round((angry_val / current_frame_val) * 100, 1)) * 2
             face_box_color = red_color
         if dominant_emotion == 'disgust':
             disgust_val = disgust_val + 1
-            disgust_per = int(round((disgust_val / current_frame_val) * 100, 1)) * 2
             face_box_color = grey_color
         if dominant_emotion == 'fear':
             fear_val = fear_val + 1
-            fear_per = int(round((fear_val / current_frame_val) * 100, 1)) * 2
             face_box_color = blue_color
         if dominant_emotion == 'happy':
             happy_val = happy_val + 1
-            happy_per = int(round((happy_val / current_frame_val) * 100, 1)) * 2
             face_box_color = green_color
         if dominant_emotion == 'sad':
             sad_val = sad_val + 1
-            sad_per = int(round((sad_val / current_frame_val) * 100, 1)) * 2
             face_box_color = orange_color
         if dominant_emotion == 'surprise':
             surprised_val = surprised_val + 1
-            surprised_per = int(round((surprised_val / current_frame_val) * 100, 1)) * 2
             face_box_color = pink_color
         if dominant_emotion == 'neutral':
             neutral_val = neutral_val + 1;
-            neutral_per = int(round((neutral_val / current_frame_val) * 100, 0)) * 2
             face_box_color = white_color
+
+        # Calculte the mean of the dominant emotion per frame
+        angry_per = int(round((angry_val / current_frame_val) * 100, 1)) * 2
+        disgust_per = int(round((disgust_val / current_frame_val) * 100, 1)) * 2
+        fear_per = int(round((fear_val / current_frame_val) * 100, 1)) * 2
+        happy_per = int(round((happy_val / current_frame_val) * 100, 1)) * 2
+        sad_per = int(round((sad_val / current_frame_val) * 100, 1)) * 2
+        surprised_per = int(round((surprised_val / current_frame_val) * 100, 1)) * 2
+        neutral_per = int(round((neutral_val / current_frame_val) * 100, 0)) * 2
 
         cv2.rectangle(frame, (x1, y1), (x2, y2), face_box_color, 2, )
         cv2.putText(frame, (dominant_emotion.upper() + "-" + str(round(emotion_score * 100,1)) + "%"), (x1, y2 + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
@@ -128,11 +130,11 @@ while True:
 
     cv2.putText(frame, "Disgust", (5, 245), cv2.FONT_HERSHEY_SIMPLEX, 0.5, black_color, 1, cv2.CV_AA)
     cv2.rectangle(frame, (graph_start_x, 230), (disgust_per + graph_start_x, 250), grey_color, -1)
-    print("frames " + str(current_frame_val))
 
     happy_q = round(((neutral_val + happy_val + surprised_val) / current_frame_val) * 100, 1)
     sad_q = round(((fear_val + sad_val + angry_val + disgust_val) / current_frame_val) * 100, 1)
 
+    cv2.rectangle(frame, (int(frame_width)-320, 12), (int(frame_width)-50, 35), platinum_color, -1)
 
     cv2.putText(frame, "INTERVENTION INDICATOR", (int(frame_width)-300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, black_color, 1, cv2.CV_AA)
     if happy_q >= 50:
